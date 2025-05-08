@@ -15,6 +15,7 @@ export default function EditForm() {
   const { control, reset, watch } = useForm<PostForm>()
 
   const searchParams = useSearchParams()
+  const templateId = searchParams.get('template_id')
 
   const getWordCount = useCallback(
     () => editorRef.current?.getInstance()?.storage.characterCount.words() ?? 0,
@@ -26,8 +27,6 @@ export default function EditForm() {
     //   reset({ ...post })
     //   setIsLoading(false)
     // })
-
-    const templateId = searchParams.get('template_id') // e.g. /page?template_id=1
     const params = new URLSearchParams({ template_id: templateId ?? '1' })
     fetch(
       `https://api-oos.jojonomic.com/19983/templify/get?${params.toString()}`,
@@ -119,7 +118,7 @@ export default function EditForm() {
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                template_id: '8gI1CYIOtEsgRb3v',
+                template_id: templateId,
                 content: editorContent,
               }),
             }
