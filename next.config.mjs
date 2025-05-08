@@ -1,9 +1,9 @@
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -14,12 +14,12 @@ const nextConfig = {
       test: /\.svg$/,
       use: [
         {
-          loader: "@svgr/webpack",
+          loader: '@svgr/webpack',
           options: {
             svgoConfig: {
               plugins: [
                 {
-                  name: "preset-default",
+                  name: 'preset-default',
                   params: {
                     overrides: {
                       removeViewBox: false,
@@ -31,12 +31,12 @@ const nextConfig = {
           },
         },
       ],
-    });
-    return config;
+    })
+    return config
   },
   images: {
     domains: ['res.cloudinary.com', 'images.unsplash.com'],
   },
-};
+}
 
-export default nextConfig;
+export default nextConfig
